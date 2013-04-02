@@ -1,4 +1,5 @@
 #!/bin/bash
 
-. bin/activate
+. bin/activate || . Scripts/activate
 ./bus/tests.py
+./robotics/tests.py

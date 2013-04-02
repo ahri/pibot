@@ -1,7 +1,8 @@
 # coding: utf-8
 
 from bus.api import ABus, ABusAddress, ABusAddressExecutor
-from bus import BusAddress, BusAddressExecutor
+from bus import BusAddress
+from robotics import BusAddressExecutor
 
 
 # Registrations

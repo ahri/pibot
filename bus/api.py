@@ -4,6 +4,10 @@ from abc import ABCMeta, abstractmethod
 
 class ABus(object):
 
+    """
+    Perform operations on a defined bus.
+    """
+
     __metaclass__ = ABCMeta
 
     @abstractmethod
@@ -25,17 +29,21 @@ class ABusAddress(object):
 
     @abstractmethod
     def read_byte(self):
-        pass
+        "Read a single byte."
 
     @abstractmethod
     def write_byte(self, byte):
-        pass
+        "Write a single byte."
 
 
 class ABusAddressExecutor(object):
+
+    """
+    Execute single-byte commands, supplying multiple parameters.
+    """
 
     __metaclass__ = ABCMeta
 
     @abstractmethod
     def execute(self, command, *params):
-        pass
+        "Execute a command with zero or more parameters."
