@@ -2,25 +2,50 @@
 
 from bus.api import ABus, ABusAddress, ABusAddressExecutor
 from bus import BusAddress
-from robotics import BusAddressExecutor
+from robotics import Aflex2
 
 
 # Registrations
 ABusAddress.register(BusAddress)
-ABusAddressExecutor.register(BusAddressExecutor)
 
 
-def real():
+class VerboseProxy(object):
+
+    """
+    For debugging; print out and proxy calls.
+    """
+
+    def __init__(self, obj):
+        self.obj = obj
+
+    def __getattribute__(self, name):
+        obj = object.__getattribute__('obj')
+        attr = obj.__getattribute__(name)
+        if not callable(attr):
+            return attr
+
+        def verbose_call(*params):
+            print "Calling %s%s" % (name, params)
+            return attr(*params)
+
+        # monkey-patch
+        attr = verbose_call
+        return attr
+
+
+def real_bus():
     import smbus
     first_bus = smbus.SMBus(0)
     ABus.register(smbus.SMBus)
-    ADDRESS = 0x4A  # sourced from `i2cdetect -y 0`
+    return first_bus
 
-    CMD_LEADER = 0xFE
+def fake_bus():
+    from doublex import Stub, ANY_ARG
+    with Stub(ABus) as stub_bus:
+        stub_bus.read_byte(ANY_ARG).returns(0x01)
 
-    addr = BusAddress(first_bus, ADDRESS)
-    return addr.read_byte, BusAddressExecutor(addr, CMD_LEADER).execute
+    return VerboseProxy(stub_bus)
 
+ADDRESS = 0x4A  # sourced from `i2cdetect -y 0`
 
-def fake():
-    return lambda: 0, lambda *stuff: None
+aflex2 = Aflex2(BusAddress(fake_bus(), ADDRESS))
