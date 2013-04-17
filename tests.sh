@@ -5,5 +5,7 @@
     . Scripts/activate
 )
 
+find bus robotics -name '*.py' -exec grep TODO {} \;
+
 ./bus/tests.py
 ./robotics/tests.py
