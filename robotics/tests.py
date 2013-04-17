@@ -97,7 +97,7 @@ class TestAflex2MotorCurrent(TestCase):
 
     def test_run(self):
         # Arrange
-        PERCENT_MAX = 100
+        CURRENT_MAX = 2000
 
         # aflex2 works with a 10-250 current scale
         SCALED_MAX = 250
@@ -109,8 +109,8 @@ class TestAflex2MotorCurrent(TestCase):
         board = Aflex2(mock_bus_address)
 
         # Act
-        pc = PERCENT_MAX
-        board.motor_current(pc)
+        mA = CURRENT_MAX
+        board.motor_current(mA)
 
         # Assert
         assert_that(mock_bus_address, verify())

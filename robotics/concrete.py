@@ -69,6 +69,6 @@ class Aflex2(object):
     def motor_reverse(self, num, pc):
         self.motor_reverse_pwm(num, self._pc_to_pwm(pc))
 
-    def motor_current(self, pc):
-        val = int((pc/100.0)*Aflex2.MAX_CURRENT_SCALE)
+    def motor_current(self, mA):
+        val = int((mA/2000.0)*Aflex2.MAX_CURRENT_SCALE)
         self._exec(Aflex2.CMD_MOTOR_CURRENT, val)
