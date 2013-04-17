@@ -34,16 +34,3 @@ class ABusAddress(object):
     @abstractmethod
     def write_byte(self, byte):
         "Write a single byte."
-
-
-class ABusAddressExecutor(object):
-
-    """
-    Execute single-byte commands, supplying multiple parameters.
-    """
-
-    __metaclass__ = ABCMeta
-
-    @abstractmethod
-    def execute(self, command, *params):
-        "Execute a command with zero or more parameters."
