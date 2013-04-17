@@ -1,5 +1,8 @@
 # coding: utf-8
 
+from api import *
+
+
 class Aflex2(object):
 
     LEADER = 0xfe
@@ -72,3 +75,14 @@ class Aflex2(object):
     def motor_current(self, mA):
         val = int((mA/2000.0)*Aflex2.MAX_CURRENT_SCALE)
         self._exec(Aflex2.CMD_MOTOR_CURRENT, val)
+
+
+ABoardFirmwareVersion.register(Aflex2)
+ABoardMicroswitchRead.register(Aflex2)
+ABoardMicroswitch4bitRead.register(Aflex2)
+ABoardMotorCurrent.register(Aflex2)
+ABoardMotor.register(Aflex2)
+ABoardMotorPwm.register(Aflex2)
+ABoardDigitalMode.register(Aflex2)
+ABoardDigitalRead.register(Aflex2)
+ABoardDigitalWrite.register(Aflex2)

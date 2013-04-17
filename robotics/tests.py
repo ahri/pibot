@@ -307,7 +307,6 @@ class TestAflex2DigitalWrite(TestCase):
         assert_that(mock_bus_address, verify())
 
 
-# TODO: build abstractions for api
 # TODO: pwm < 0 or > 250
 # TODO: pc < 0 or > 100
 # TODO: motor < 1 or > 2
