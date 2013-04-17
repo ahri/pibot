@@ -5,10 +5,6 @@ from bus import BusAddress
 from robotics import Aflex2
 
 
-# Registrations
-ABusAddress.register(BusAddress)
-
-
 class VerboseProxy(object):
 
     """

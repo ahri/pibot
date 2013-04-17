@@ -1,5 +1,7 @@
 # coding: utf-8
 
+from api import *
+
 
 class BusAddress(object):
 
@@ -12,3 +14,6 @@ class BusAddress(object):
 
     def write_byte(self, byte):
         self.bus.write_byte(self.address, byte)
+
+
+ABusAddress.register(BusAddress)
