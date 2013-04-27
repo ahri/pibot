@@ -4,8 +4,8 @@
 from unittest import TestCase, main as test_main
 from doublex import Mock, verify
 from hamcrest import assert_that, equal_to
-from api import ABus, ABusAddress
-from concrete import BusAddress
+from bus.api import ABus, ABusAddress
+from bus import BusAddress
 
 
 class TestBusAddress(TestCase):

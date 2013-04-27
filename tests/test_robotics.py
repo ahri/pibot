@@ -5,7 +5,7 @@ from unittest import TestCase, main as test_main
 from doublex import Mock, verify
 from hamcrest import assert_that, equal_to
 from bus.api import ABus, ABusAddress
-from concrete import Aflex2
+from robotics import Aflex2
 
 
 CMD_LEADER = 0xfe
