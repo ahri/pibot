@@ -8,3 +8,5 @@ build/
 *.pyc
 *.pyo
 Scripts/
+*.egg
+*.egg-info
